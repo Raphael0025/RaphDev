@@ -20,19 +20,52 @@ body{
   justify-content: center;
   align-items: center;
 }
-.nav{
-  left: 2%;
-  top: 25%;
-  position: fixed;
-  background-color: var(--tertiary-color);
-  height: 50%;
-}
 .App {
   text-align: center;
   background-color: var(--secondary-color);
   color: var(--text);
   height: 100vh;
   width: 100vw;
+}
+.nav{
+  left: 2%;
+  top: 25%;
+  position: fixed;
+  height: 50%;
+  background-color: var(--secondary-color);
+  box-shadow: 0 5px 8px 1px var(--primary-color);
+  width: 60px;
+}
+.nav-items{
+  color: var(--primary-color);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover .txt{
+    left: 120%;
+    opacity: 1;
+  }
+}
+  .nav-items:hover{
+    transform: scale(1.5);
+  }
+  .itm:hover{
+    filter: drop-shadow(0px 2px 4px var(--white));
+    animation: rotate 0.6s ease-in-out;
+  }
+.txt{
+  position: absolute;
+  left: 100%;
+  opacity: 0;
+  color: var(--text);
+  animation: fadeIn 0.3s ease-in-out forwards;
+  font-size: 18px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.3s ease-in-out;
 }
 .home{
   background-color: #254E58;
@@ -44,6 +77,70 @@ body{
     padding: 10%;
     background-color: var(--primary-fade-color);
   }
-.pop{
-  
+.icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+  .icon:hover{
+    animation: shake 0.6s ease-in-out;
+  }
+.ia{
+  transition: all 0.2s ease-out;
+}
+  .ia:hover{
+    transform: scale(1.5);
+  }
+.ia:nth-child(1):hover{
+  color: blue;
+}
+.ia:nth-child(2):hover{
+  color:darkblue;
+}
+.ia:nth-child(3):hover{
+  color:lightseagreen;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(0%);
+    
+  }
+  to {
+    opacity: 1;
+    transform: translateX(10%);
+  }
+}
+
+@keyframes rotate {
+  0%{
+    transform: rotate(0deg) ;
+  } 25% {
+    transform: rotate(-45deg);
+  } 50% {
+    transform: rotate(45deg);
+  } 75% {
+    transform: rotate(-45deg);
+  } 
+}
+
+@keyframes shake {
+  /* 0%{
+    transform: rotate(0deg) ;
+  } 25% {
+    transform: rotate(-15deg);
+  } 50% {
+    transform: rotate(15deg);
+  } 75% {
+    transform: rotate(-15deg);
+  }  */
+  from{
+    transform: rotate(0deg);
+  } to {
+    transform: rotate(360deg);
+  }
 }
