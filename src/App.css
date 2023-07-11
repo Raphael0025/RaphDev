@@ -1,11 +1,16 @@
 :root{
   --primary-color: #254E58;
+  --dark-color: #384e52;
   --primary-fade-color: #254E58AF;
   --secondary-color: #88BDBC;
+  --background: #577F8A;
   --tertiary-color: #7CBCCB;
   --text: #C1ECF8;
   --white: #fff;
   --black: #000;
+}
+html{
+  background-color: var(--background);
 }
 body{
   padding: 0;
@@ -19,6 +24,7 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--background);
 }
 .App {
   text-align: center;
@@ -26,6 +32,7 @@ body{
   color: var(--text);
   height: 100vh;
   width: 100vw;
+  background-color: var(--background);
 }
 .nav{
   left: 2%;
@@ -84,26 +91,152 @@ body{
   border-radius: 50%;
   width: 50px;
   height: 50px;
+  transition: transform 0.5s;
+  cursor: pointer;
 }
   .icon:hover{
-    animation: shake 0.6s ease-in-out;
+    outline: 1px solid white;
+    box-shadow: 0 0 4px 2px white;
+    color: #fff;
+    border-radius: 50%;
+    transform: rotate(360deg);
+    background-color: #3b5998;
+  }
+  .twitter:hover{
+    background-color: #1DA1F2;
   }
 .ia{
   transition: all 0.2s ease-out;
 }
   .ia:hover{
-    transform: scale(1.5);
+    transform: scale(1.3);
   }
-.ia:nth-child(1):hover{
-  color: blue;
+.name{
+  font-size:4rem;
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 3px var(--secondary-color);
+  cursor: pointer;
 }
-.ia:nth-child(2):hover{
-  color:darkblue;
-}
-.ia:nth-child(3):hover{
-  color:lightseagreen;
+.title{
+  font-size:8rem;
+  letter-spacing: 0.3em;
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 3px var(--tertiary-color);
+  cursor: default;
 }
 
+.r-title{
+  font-size:6rem;
+  letter-spacing: 0.3em;
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 3px var(--tertiary-color);
+}
+
+.rotated {
+  right: 0;
+  position: absolute;
+  transform: translate(35%, 0%) rotate(90deg);
+}
+
+.round-img{
+  width: 100%;
+  box-shadow: 0 5px 8px 2px var(--primary-color);
+  animation: animate 5s ease-in-out infinite alternate;
+}
+
+.service, .projects, .feedback, .contacts, .bio{
+  background-color: var(--background);
+}
+.service{
+  box-shadow: 0 -10px 25px 8px;
+}
+.card-icon{
+  width: 100%;
+}
+.custom-card{
+  border-radius: 15px;
+  width: 100%;
+  min-height: 530px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+  .custom-card:hover{
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px 2px var(--white);
+    background-color: var(--tertiary-color);
+    color: var(--primary-color);
+  }
+.card-container{
+  height: 100%;
+}
+.image-container{
+  border: 1px solid black;
+  width: 280px;
+  height: 250px;
+}
+.label-bg, .lb{
+  background-color: transparent;
+}
+#send{
+  font-weight: 700;
+  color: var(--text);
+  outline:2px solid var(--tertiary-color);
+  background-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+  #send:hover{
+    outline: none;
+    box-shadow: 0 4px 8px 2px var(--secondary-color);
+    background-color: var(--primary-color);
+    transform: scale(1.2);
+  }
+  span:nth-child(1):hover{
+    color: var(--white);
+    transition: all 0.3s ease-out;
+  }
+  span:nth-child(2):hover{
+    color: var(--white);
+    transition: all 0.3s ease-out;
+  }
+#typing-text {
+  color: var(--white);
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: .15em solid var(--text);
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: .30em;
+  animation: cursor-blink 0.2s step-end infinite alternate;
+}
+.button{
+  border-radius: 10px;
+  border: 1px solid var(--secondary-color);
+  color: var(--text);
+  font-weight: 500;
+  background-color: transparent;
+  transition: all 0.3s ease-out;
+  text-transform: uppercase;
+}
+  .button:hover{
+    letter-spacing: 5px;
+    background-color: var(--dark-color);
+    border: none;
+    box-shadow: 0 2px 4px 3px var(--secondary-color);
+  }
+@keyframes animate {
+  0% {
+    border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+  }
+  50% {
+    border-radius: 30% 70% 60% 40%/50% 60% 30% 60%;
+  }
+  100% {
+    border-radius: 60% 40% 30% 70%/50% 60% 30% 60%;
+  }
+}
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -128,19 +261,12 @@ body{
   } 
 }
 
-@keyframes shake {
-  /* 0%{
-    transform: rotate(0deg) ;
-  } 25% {
-    transform: rotate(-15deg);
-  } 50% {
-    transform: rotate(15deg);
-  } 75% {
-    transform: rotate(-15deg);
-  }  */
-  from{
-    transform: rotate(0deg);
-  } to {
-    transform: rotate(360deg);
+@keyframes cursor-blink {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: var(--text);
   }
 }
