@@ -47,18 +47,15 @@ function Home() {
         };
         typeAnimation();
     }, []);
-    
     const handleBtn = () => {
         window.open(resume, '_blank');
     };
-
     return (
         <div id='home' className='home d-flex h-100'>
             <div className='inner-home d-flex flex-column justify-content-center align-items-center'>
                 <h5 className='animate__animated animate__lightSpeedInRight'>Hey there, I'm</h5>
                 <h1 className='name animate__animated animate__lightSpeedInLeft'><span>RAPHAEL</span><span> ISLA</span></h1>
                 <h5 id="typing-text">Freelance {text}</h5>
-                
                 <div className='row col-11 align-items-start justify-content-center'>
                     <div className='col-1 ia'>
                         <div className='icon'>
@@ -67,7 +64,7 @@ function Home() {
                         
                     </div>
                     <div className='col-1 ia'>
-                        <div className='icon'>
+                        <div className='icon linked'>
                             <FaLinkedinIn className='' size={24} />
                         </div>
                     </div>
@@ -86,5 +83,4 @@ function Home() {
         </div>
     )
 }
-
 export default Home
