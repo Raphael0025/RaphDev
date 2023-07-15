@@ -125,7 +125,11 @@ body{
   color: transparent;
   -webkit-text-stroke: 3px var(--tertiary-color);
   cursor: default;
+  transition: all 0.5s ease-in-out;
 }
+  .title:hover{
+    color: var(--white);
+  }
 .r-title{
   font-size:6rem;
   letter-spacing: 0.3em;
@@ -172,10 +176,42 @@ body{
   height: 100%;
 }
 .image-container{
-  border: 1px solid black;
   width: 280px;
   height: 250px;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+  position: relative;
 }
+  .image-container:hover{
+    z-index: 3;
+    transform: scale(1.2);
+  }
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: var(--primary-fade-color);
+  transition: height 0.3s;
+  overflow: hidden;
+}
+  .image-container:hover .overlay {
+    height: 100%;
+  }
+.overlay-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+  .image-container:hover .overlay-content {
+    opacity: 1;
+  }
 .lb{
   color: var(--text);
   border-top: none;
@@ -247,7 +283,24 @@ input::placeholder, textarea::placeholder{
     border: none;
     box-shadow: 0 2px 4px 3px var(--secondary-color);
   }
-
+.slide{
+    height: 350px;
+    opacity: 0.5;
+    transform: scale(.7);
+    transition: .5s;
+}
+.slide-active{
+    opacity: 1;
+    transform: scale(1.1);
+}
+.shape {
+  position: absolute;
+  width: 105%;
+  height: 110%;
+  background: var(--secondary-color);
+  animation: animate 5s ease-in-out infinite alternate;
+  /* Add additional styling properties as needed */
+}
 @keyframes animate {
   0% {
     border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;

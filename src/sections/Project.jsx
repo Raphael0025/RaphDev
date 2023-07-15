@@ -10,14 +10,9 @@ function Project() {
             </div>
             <div className='container d-flex flex-wrap justify-content-center align-items-center flex-row '>
                 <Images />
-                <Images />
-                <Images />
-                <Images />
-
-                <Images />
-                <Images />
-                <Images />
-                <Images />
+            </div>
+            <div className='d-flex align-items-end justify-content-end p-4 w-75'>
+                hello See More 
             </div>
         </div>
     )
