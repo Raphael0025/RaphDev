@@ -23,8 +23,8 @@ function Contact() {
 
         // Configure the email template parameters
         const templateParams = {
-            to_email: clientEmail, // Replace with your email address
-            from_email: 'rpbisla0025@gmail.com',
+            to_email: 'rpbisla0025@gmail.com', // Replace with your email address
+            from_email: clientEmail,
             name: formData.name,
             subject: formData.subject,
             message: formData.message,
@@ -33,6 +33,7 @@ function Contact() {
         emailjs.send('service_0gh9hj4', 'template_j22od16', templateParams, '7WhHrpm5BgAiRtffK')
             .then((result) => {
                 console.log(result.text);
+                alert('ok')
             }).catch((error) => {
                 console.log(error.text)
             })
