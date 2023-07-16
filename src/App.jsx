@@ -1,16 +1,17 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import './App.css';
 import MainApp from './pages/MainApp';
-import AllProjects from './pages/AllProjects';
+import AllProjects from './pages/AllProjects'
+import 'animate.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={MainApp} />
-        <Route path="/all-projects" component={AllProjects} />
-      </Switch>
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<MainApp />} />
+        <Route path='/all-projects' element={<AllProjects />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

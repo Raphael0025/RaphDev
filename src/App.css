@@ -26,13 +26,16 @@ body{
   justify-content: center;
   align-items: center;
 }
-.App {
+.App, .AllProj {
   text-align: center;
   background-color: var(--secondary-color);
   color: var(--text);
   height: 100vh;
   width: 100vw;
   background-color: var(--background);
+}
+.AllProj{
+  height: 0;
 }
 .nav{
   left: 2%;
@@ -298,6 +301,10 @@ input::placeholder, textarea::placeholder{
   background: var(--secondary-color);
   animation: animate 10s ease-in-out infinite alternate-reverse;
   /* Add additional styling properties as needed */
+}
+.projects{
+  background-color: transparent;
+  width: 0%;
 }
 .animate_drop{
   animation: drop 3s ease-in-out alternate;
