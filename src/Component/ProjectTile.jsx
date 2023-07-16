@@ -1,5 +1,5 @@
 import React from 'react'
-import 'animate.css';
+import 'animate.css'; 
 
 function ProjectTile({image, title, siteUrl}) {
     return (

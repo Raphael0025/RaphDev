@@ -1,6 +1,7 @@
 import React from 'react'
 import Title from '../Component/Title'
 import ProjectTile from '../Component/ProjectTile'
+import { Link } from 'react-router-dom';
 
 import image from '../assets/projects/webPortfolio.png'
 import image1 from '../assets/projects/lakbay.png'

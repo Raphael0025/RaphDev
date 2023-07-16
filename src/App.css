@@ -380,6 +380,7 @@ input::placeholder, textarea::placeholder{
   height: 40px;
   background-color: var(--primary-color);
   bottom: 60px;
+  list-style: none;
   -webkit-animation: square 25s infinite;
   animation: square 25s infinite;
   -webkit-transition-timing-function: linear;

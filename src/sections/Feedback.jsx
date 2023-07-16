@@ -1,6 +1,6 @@
 import React from 'react'
 import Title from '../Component/Title'
-import SliderComp from '../Component/SliderComp'
+import SliderComp from '../Component/SliderComp' 
 
 function Feedback() {
     return (
