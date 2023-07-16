@@ -1,12 +1,16 @@
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import MainApp from './pages/MainApp';
-import 'animate.css';
+import AllProjects from './pages/AllProjects';
 
 function App() {
   return (
-    <div className="App m-0 p-0">
-      <MainApp />
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={MainApp} />
+        <Route path="/all-projects" component={AllProjects} />
+      </Switch>
+    </Router>
   );
 }
 

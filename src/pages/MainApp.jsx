@@ -9,7 +9,7 @@ import Feedback from '../sections/Feedback'
 
 function MainApp() {
     return (
-        <div className=""> 
+        <div className="App m-0 p-0"> 
             <SideBar />
             <Home />
             <Services />
