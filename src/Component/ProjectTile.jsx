@@ -1,75 +1,18 @@
 import React from 'react'
 
-import image from '../assets/projects/webPortfolio.png'
-import image1 from '../assets/projects/lakbay.png'
-import image2 from '../assets/projects/watch.png'
-import image3 from '../assets/projects/geometry.png'
-import image4 from '../assets/projects/modiform.png'
-import image5 from '../assets/projects/react-calculator.png'
-import image6 from '../assets/projects/quote.png'
-import image7 from '../assets/projects/clock-react.png'
-
-const images = [
-    {
-        id: 1,
-        url: image,
-        webUrl: 'https://web-portfolio-phi-amber.vercel.app/',
-    },
-    {
-        id: 2,
-        url: image1,
-        webUrl: 'https://raphael0025.github.io/',
-    },
-    {
-        id: 3,
-        url: image2,
-        webUrl: 'https://landing-page-taupe-sigma-81.vercel.app/',
-    },
-    {
-        id: 4,
-        url: image3,
-        webUrl: 'https://geometry-web.vercel.app/',
-    },
-    {
-        id: 5,
-        url: image4,
-        webUrl: 'https://modiform-unofficial.vercel.app/',
-    },
-    {
-        id: 6,
-        url: image5,
-        webUrl: 'https://react-calculator-nine-lime.vercel.app/',
-    },
-    {
-        id: 7,
-        url: image6,
-        webUrl: 'https://quote-generator-three-dun.vercel.app/',
-    },
-    {
-        id: 8,
-        url: image7,
-        webUrl: 'https://clock-react-gamma.vercel.app/',
-    },
-]
-
-function Images() {
+function ProjectTile({image}) {
     return (
-        <>
-            {images.map((image, index) => (
-                <div key={index} className='image-container d-flex align-items-center justify-content-center' style={{ backgroundImage: `url(${image.url})`}}>
-                    <div className='overlay'>
-                        <div className='overlay-content'>
-                            <h2>ko</h2>
-                        </div>
-                    </div>
+        <div className='image-container d-flex align-items-center justify-content-center' style={{ backgroundImage: `url(${image})`}}>
+            <div className='overlay'>
+                <div className='overlay-content'>
+                    <h2>ko</h2>
                 </div>
-            ))}
-        </>
+            </div>
+        </div>
     )
 }
 
-export default Images
-
+export default ProjectTile
 
 // import image8 from '../assets/projects/drum-machine.png'
 // import image9 from '../assets/projects/markdown.png'
