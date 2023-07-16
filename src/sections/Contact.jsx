@@ -14,14 +14,14 @@ function Contact() {
         subject: '',
         message: '',
     });
+    const [toastMessage, setToastMessage] = useState('');
+    const [showToast, setShowToast] = useState(false);
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
     const sendEmail = (e) => {
         e.preventDefault();
         const clientEmail = formData.email;
-
-        // Configure the email template parameters
         const templateParams = {
             to_email: 'rpbisla0025@gmail.com', // Replace with your email address
             from_email: clientEmail,
@@ -29,17 +29,24 @@ function Contact() {
             subject: formData.subject,
             message: formData.message,
         };
-
         emailjs.send('service_0gh9hj4', 'template_j22od16', templateParams, '7WhHrpm5BgAiRtffK')
             .then((result) => {
                 console.log(result.text);
-                alert('ok')
+                setToastMessage('Message Sent Successfully to Developer!');
+                setShowToast(true);
+                setTimeout(() => {
+                    setShowToast(false);
+                }, 3000); // Hide the toast after 1 second
             }).catch((error) => {
                 console.log(error.text)
+                setToastMessage('Message Delivery Failed. Please try again.');
+                setShowToast(true);
+                setTimeout(() => {
+                    setShowToast(false);
+                }, 3000); // Hide the toast after 1 second
             })
         e.target.reset()
     };
-
     const form = useRef();
     return (
         <div id='contact' className=' container d-flex align-items-center justify-content-center p-5 h-100'>
@@ -104,8 +111,12 @@ function Contact() {
                 </form>
             </div>
             <RightTitle title={'CONTACT'}/>
+            {showToast && (
+            <div className="toast show fw-medium animate_drop" role="alert" aria-live="assertive" aria-atomic="true" style={{ position: 'fixed', top: '5%', zIndex:'9999', 'background-color': 'var(--primary-color)' }} >
+                <div className="toast-body">{toastMessage}</div>
+            </div>
+            )}
         </div>
     )
 }
-
 export default Contact

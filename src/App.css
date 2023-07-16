@@ -299,12 +299,18 @@ input::placeholder, textarea::placeholder{
   animation: animate 10s ease-in-out infinite alternate-reverse;
   /* Add additional styling properties as needed */
 }
+.animate_drop{
+  animation: drop 3s ease-in-out alternate;
+}
 @keyframes jump{
   from{
     transform: translateY(0px)
   } to {
     transform: translateY(-25px)
   }
+}
+@keyframes drop{
+  0%{top: -10%}25%{top: 5%}50%{top: 5%}75%{top: 5%}100%{top: -10%}
 }
 @keyframes animate {
   0% {
