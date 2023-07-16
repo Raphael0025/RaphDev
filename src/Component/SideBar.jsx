@@ -26,10 +26,10 @@ function SideBar () {
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
         }
-    };
+    }; 
 
     return (
-            <div className='nav d-flex justify-content-center p-3 rounded rounded-4'>
+            <div className='nav d-flex justify-content-center p-3 rounded rounded-4 z-3'>
                 <nav className='side h-100 d-flex flex-column  justify-content-evenly'>
                     
                     <div className='nav-items' onMouseEnter={() => handleMouse('home')} onMouseLeave={handleMouseLeave} onClick={() => handleClick('home')}>

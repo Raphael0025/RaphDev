@@ -2,6 +2,7 @@
   --primary-color: #254E58;
   --dark-color: #384e52;
   --primary-fade-color: #254E58AF;
+  --project-tile-color: #254E58cf;
   --secondary-color: #88BDBC;
   --background: #577F8A;
   --tertiary-color: #7CBCCB;
@@ -150,31 +151,25 @@ body{
 .round-img{
   width: 100%;
   box-shadow: 0 5px 8px 2px var(--primary-color);
-  animation: animate 5s ease-in-out infinite alternate;
+  animation: animate 4s ease-in-out infinite alternate;
 }
-.service{
-  box-shadow: 0 -40px 25px 8px;
-  
-}
-.card-icon{
-  width: 100%;
+.service-color{
+  color: var(--text);
 }
 .custom-card{
-  border-radius: 15px;
-  width: 100%;
-  min-height: 530px;
   cursor: pointer;
-  transition: all 0.5s ease-in-out;
+  z-index: 1;
+  transition: all 0.2s ease-in-out;
 }
   .custom-card:hover{
-    transform: scale(1.05);
+    z-index: 2;
+    transform: scale(1.05) scaleX(1.1);
     box-shadow: 0 4px 8px 2px var(--white);
     background-color: var(--tertiary-color);
-    color: var(--primary-color);
+    & .service-color{
+      color: var(--primary-color);
+    }
   }
-.card-container{
-  height: 100%;
-}
 .image-container{
   width: 280px;
   height: 250px;
@@ -194,7 +189,7 @@ body{
   left: 0;
   width: 100%;
   height: 0;
-  background-color: var(--primary-fade-color);
+  background-color: var(--project-tile-color);
   transition: height 0.3s;
   overflow: hidden;
 }
@@ -212,6 +207,9 @@ body{
   .image-container:hover .overlay-content {
     opacity: 1;
   }
+.title_animate{
+  animation: jump 0.5s ease-in-out infinite alternate; 
+}
 .lb{
   color: var(--text);
   border-top: none;
@@ -298,8 +296,15 @@ input::placeholder, textarea::placeholder{
   width: 105%;
   height: 110%;
   background: var(--secondary-color);
-  animation: animate 5s ease-in-out infinite alternate;
+  animation: animate 10s ease-in-out infinite alternate-reverse;
   /* Add additional styling properties as needed */
+}
+@keyframes jump{
+  from{
+    transform: translateY(0px)
+  } to {
+    transform: translateY(-25px)
+  }
 }
 @keyframes animate {
   0% {
@@ -323,7 +328,6 @@ input::placeholder, textarea::placeholder{
     transform: translateX(10%);
   }
 }
-
 @keyframes rotate {
   0%{
     transform: rotate(0deg) ;
@@ -335,7 +339,6 @@ input::placeholder, textarea::placeholder{
     transform: rotate(-45deg);
   } 
 }
-
 @keyframes cursor-blink {
   from,
   to {

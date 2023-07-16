@@ -16,41 +16,49 @@ const images = [
         id: 1,
         url: image,
         webUrl: 'https://web-portfolio-phi-amber.vercel.app/',
+        projDesc: 'Web Portfolio',
     },
     {
         id: 2,
         url: image1,
         webUrl: 'https://raphael0025.github.io/',
+        projDesc: 'Lakbay Pasay Site',
     },
     {
         id: 3,
         url: image2,
         webUrl: 'https://landing-page-taupe-sigma-81.vercel.app/',
+        projDesc: 'Apple Wacth Landing Page',
     },
     {
         id: 4,
         url: image3,
         webUrl: 'https://geometry-web.vercel.app/',
+        projDesc: 'Geometry Calculator',
     },
     {
         id: 5,
         url: image4,
         webUrl: 'https://modiform-unofficial.vercel.app/',
+        projDesc: 'STI Modiform',
     },
     {
         id: 6,
         url: image5,
         webUrl: 'https://react-calculator-nine-lime.vercel.app/',
+        projDesc: 'React Calculator',
     },
     {
         id: 7,
         url: image6,
         webUrl: 'https://quote-generator-three-dun.vercel.app/',
+        projDesc: 'React Quote Generator',
     },
     {
         id: 8,
         url: image7,
         webUrl: 'https://clock-react-gamma.vercel.app/',
+        projDesc: 'Promodoro Clock Technique',
     },
 ]
 
@@ -62,7 +70,7 @@ function Project() {
             </div>
             <div className='container d-flex flex-wrap justify-content-center align-items-center flex-row '>
                 {images.map((image, index) => (
-                    <ProjectTile key={index} image={image.url} />
+                    <ProjectTile key={index} image={image.url} title={image.projDesc} siteUrl={image.webUrl}/>
                 ))}
             </div>
             <div className='d-flex align-items-end justify-content-end p-4 w-75'>

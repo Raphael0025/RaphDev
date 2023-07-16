@@ -58,22 +58,26 @@ function Home() {
                 <h5 id="typing-text">Freelance {text}</h5>
                 <div className='row col-11 align-items-start justify-content-center'>
                     <div className='col-1 ia'>
-                        <div className='icon'>
-                            <FaFacebookF className='' size={24} />
-                        </div>
-                        
+                        <a href='https://www.facebook.com/RpB.Isla' target='_blank' rel='noopener noreferrer' style={{'color': 'var(--text)'}}>
+                            <div className='icon'>
+                                <FaFacebookF className='' size={24} />
+                            </div>
+                        </a>
                     </div>
                     <div className='col-1 ia'>
-                        <div className='icon linked'>
-                            <FaLinkedinIn className='' size={24} />
-                        </div>
+                        <a href='https://www.linkedin.com/in/raphael-pepiton-isla-0025/' target='_blank' rel='noopener noreferrer' style={{'color': 'var(--text)'}}>
+                            <div className='icon linked'>
+                                <FaLinkedinIn className='' size={24} />
+                            </div>
+                        </a>
                     </div>
                     <div className='col-1 ia'>
-                        <div className='icon twitter'>
-                            <FaTwitter className='' size={24} />
-                        </div>
+                        <a href='https://twitter.com/04Rap20' target='_blank' rel='noopener noreferrer' style={{'color': 'var(--text)'}}>
+                            <div className='icon twitter'>
+                                <FaTwitter className='' size={24} />
+                            </div>
+                        </a>
                     </div>
-                
                     <div className='col-2 d-flex justify-content-center align-items-center p-0'>
                         <button onClick={handleBtn} className='button p-2 pe-3 ps-3'> Resume<BsDownload className='ms-2' size={24}/> </button>
                     </div>
