@@ -65,7 +65,7 @@ function Home() {
             <div className='inner-home d-flex flex-column justify-content-center align-items-center'>
                 <h5 className='animate__animated animate__lightSpeedInRight'>Hey there, I'm</h5>
                 <h1 className='name animate__animated animate__lightSpeedInLeft'><span>RAPHAEL</span><span> ISLA</span></h1>
-                <h5 id="typing-text">Freelance {text}</h5>
+                <h5 id="typing-text">Freelance {isSmallScreen ? 'Web Developer' : text}</h5>
                 <div className={`row ${isSmallScreen ? 'col-12' : 'col-11'} pt-3 align-items-start justify-content-center`}>
                     <div className={`${isSmallScreen ? 'col-4' : 'col-1'} ia d-flex justify-content-center`}>
                         <a href='https://www.facebook.com/RpB.Isla' target='_blank' rel='noopener noreferrer' style={{'color': 'var(--text)'}}>
@@ -89,7 +89,7 @@ function Home() {
                         </a>
                     </div>
                     <div className={`${isSmallScreen ? 'col-12' : 'col-2'} d-flex justify-content-center align-items-center p-0`}>
-                        <button onClick={handleBtn} className='button p-2 pe-3 ps-3'> Resume<BsDownload className='ms-2' size={24}/> </button>
+                        <button onClick={handleBtn} className={`button p-2 ${isSmallScreen ? 'col-10' : 'pe-3 ps-3'}`}> Resume<BsDownload className='ms-2' size={24}/> </button>
                     </div>
                     
                 </div>
