@@ -350,6 +350,12 @@ input::placeholder, textarea::placeholder{
     font-size:3rem;
     letter-spacing: 0.1em;
   }
+  .custom-card{
+    background-color: var(--tertiary-color);
+    & .service-color{
+      color: var(--primary-color);
+    }
+  }
   .custom-card:hover{
     transform: scale(1);
   }
