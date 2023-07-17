@@ -3,6 +3,8 @@ import Title from '../Component/Title'
 import ProjectTile from '../Component/ProjectTile'
 import '../App.css';
 import { Link } from 'react-router-dom';
+import { FiArrowLeft } from 'react-icons/fi';
+import 'animate.css'; 
 
 import image from '../assets/projects/webPortfolio.png'
 import image1 from '../assets/projects/lakbay.png'
@@ -174,10 +176,10 @@ function AllProjects() {
         <div className='AllProj'>
             <div className='container projects d-flex flex-column justify-content-center align-items-center p-5' >
                 <div className='container d-flex justify-content-start align-items-start flex-column'>
-                    <Title className='z-1n ps-5 pe-5' title={'PROJECTS'}/>
-                    <Link to='/' className='p-2 ps-5'>Go Back</Link>
+                    <Title className='z-1n ps-3 pe-5' title={'PROJECTS'}/>
+                    <Link to='/' className='fw-bold fs-4 link-btn p-2 ps-5'><FiArrowLeft  size={24} className='fw-bolder'/> Go Back</Link> 
                 </div>
-                <div className='container d-flex flex-wrap justify-content-start align-items-center flex-row ps-5 pt-4 pe-5'>
+                <div className='container d-flex flex-wrap justify-content-start align-items-center flex-row ps-5 pt-4 pe-5 animate__animated animate__fadeIn'>
                     {images.map((image, index) => (
                         <ProjectTile key={index} image={image.url} title={image.projDesc} siteUrl={image.webUrl}/>
                     ))}
@@ -188,13 +190,3 @@ function AllProjects() {
 }
 
 export default AllProjects
-{/* <div className='container projects d-flex flex-column justify-content-center align-items-center p-5' style={{ backgroundColor: 'transparent' }}>
-            <div>
-                <Title className='z-1n' title={'PROJECTS'}/>
-            </div>
-            <div className='container d-flex flex-wrap justify-content-start align-items-center flex-row ps-5 pe-5'>
-                {images.map((image, index) => (
-                    <ProjectTile key={index} image={image.url} title={image.projDesc} siteUrl={image.webUrl}/>
-                ))}
-            </div>
-        </div> */}

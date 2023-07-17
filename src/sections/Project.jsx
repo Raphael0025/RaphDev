@@ -2,6 +2,7 @@ import React from 'react'
 import Title from '../Component/Title'
 import ProjectTile from '../Component/ProjectTile'
 import { Link } from 'react-router-dom';
+import { FiArrowRight } from 'react-icons/fi';
 
 import image from '../assets/projects/webPortfolio.png'
 import image1 from '../assets/projects/lakbay.png'
@@ -75,7 +76,7 @@ function Project() {
                 ))}
             </div>
             <div className='d-flex align-items-end justify-content-end p-4 w-75'>
-                <Link to='/all-projects'>See More...</Link> 
+                <Link to='/all-projects' className='fw-bold fs-4 link-btn '>See More <FiArrowRight size={24} className='fw-bolder'/></Link> 
             </div>
         </div>
     )

@@ -309,6 +309,16 @@ input::placeholder, textarea::placeholder{
 .animate_drop{
   animation: drop 3s ease-in-out alternate;
 }
+.link-btn{
+  color: var(--text);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in-out;
+}
+  .link-btn:hover{
+    color: var(--tertiary-color);
+    text-decoration:overline;
+  }
 @keyframes jump{
   from{
     transform: translateY(0px)
