@@ -11,7 +11,7 @@ function Card({icon, title, content}) {
     const handleMouseLeave = () => {
         setIsHovered(false);
     };
-    const cardClasses = `card custom-card p-4 text-wrap animate__animated animate__fadeIn border-0  ${
+    const cardClasses = `card custom-card p-4-xl p-0 w-100 p-2-lg text-wrap animate__animated animate__fadeIn border-0  ${
         isHovered ? '' : 'bg-transparent'
     }`;
     return (

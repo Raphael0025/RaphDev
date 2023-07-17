@@ -1,11 +1,12 @@
-import React, {useState, useRef} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import emailjs from '@emailjs/browser'
 import RightTitle from '../Component/RightTitle'
+import Title from '../Component/Title'
 import 'animate.css'
 import { BsFillCursorFill  } from 'react-icons/bs'
 import { IoLocationOutline } from 'react-icons/io5'
 import { BiPhone } from 'react-icons/bi'
-import { FaFacebookF, FaLinkedinIn, FaTwitter } from 'react-icons/fa'
+import { FaFacebookF, FaLinkedinIn, FaTwitter } from 'react-icons/fa' 
 
 function Contact() {
     const [formData, setFormData] = useState({
@@ -48,10 +49,21 @@ function Contact() {
         e.target.reset()
     };
     const form = useRef();
+    const [isSmallScreen, setIsSmallScreen] = useState(false);
+    useEffect(() => {
+        const handleResize = () => {
+            setIsSmallScreen(window.innerWidth < 576);
+        }
+        window.addEventListener('resize', handleResize)
+        handleResize()
+
+        return() => window.removeEventListener('resize', handleResize)
+    },[])
     return (
-        <div id='contact' className=' container d-flex align-items-center justify-content-center p-5 h-100'>
-            <div className=' d-flex justify-content-center align-items-center text-start p-5'>
-                <div className='col-5 rounded-5 p-3 me-3 fw-semibold fs-4'>
+        <div id='contact' className={`container container-lg d-flex ${isSmallScreen ? 'flex-column p-2' : 'p-5'} align-items-center justify-content-center p-4-lg pb-5`}>
+            {isSmallScreen ? <Title title={'CONTACT'} /> : <RightTitle title={'CONTACT'}/>}
+            <div className={`d-flex ${isSmallScreen ? 'flex-column-reverse p-2' : 'p-5'} justify-content-center align-items-center text-start`}>
+                <div className={`${isSmallScreen ? 'col-12' : 'col-5'} rounded-5 p-3 me-3 fw-semibold fs-4 fs-5-lg`}>
                     <span className='cntct-dtl'>If you have any questions or If you want to hire me, feel free to contact me, I'll be in touch as soon as possible:</span>
                     <div className='mt-4 d-flex align-items-start '>
                         <IoLocationOutline className=' me-2' size={32} />
@@ -67,7 +79,7 @@ function Contact() {
                             <p className='fs-6 fw-medium cntct-dtl'>(+63) 926 960 7368</p>
                         </div>
                     </div>
-                    <div className='d-flex flex-row mt-0 p-1 gap-3 align-items-center justify-content-start'>
+                    <div className='d-flex flex-row mt-0 p-1 pb-5 gap-3 align-items-center justify-content-start'>
                         <div className='ia'>
                             <a href='https://www.facebook.com/RpB.Isla' target='_blank' rel='noopener noreferrer' style={{'color': 'var(--text)'}}>
                                 <div className='icon'>
@@ -91,12 +103,12 @@ function Contact() {
                         </div>
                     </div>
                 </div>
-                <form ref={form} onSubmit={sendEmail} className='row g-2 rounded-4 p-3 contact_form'>
-                    <div className='head_form fs-1 fw-bold pb-3 col-7'>Let's Talk about your Project!</div>
-                    <div className='col-6 '>
+                <form ref={form} onSubmit={sendEmail} className='row g-2 rounded-4 p-3 contact_form z-2'>
+                    <div className={`head_form fs-1 fw-bold pb-3 ${isSmallScreen ? 'col-12' : 'col-7'} col-10-lg`}>Let's Talk about your Project!</div>
+                    <div className={`${isSmallScreen ? 'col12' : 'col-6'} `}>
                         <input value={formData.name} onChange={handleChange} type='text' className='w-100 mb-3 p-2 lb fw-semibold rounded-3' id='name' name='name' placeholder="Your Name" required />
                     </div>
-                    <div className='col-6 '>
+                    <div className={`${isSmallScreen ? 'col12' : 'col-6'} `}>
                         <input value={formData.email} onChange={handleChange} type='email' className='w-100 mb-3 p-2 lb fw-semibold rounded-3' id='e-mail' name='email' placeholder="Email" required />
                     </div>
                     <div className='col-12 '>
@@ -105,12 +117,11 @@ function Contact() {
                     <div className='col-12 '>
                         <textarea value={formData.message} onChange={handleChange} placeholder='Message...' name='message' className='w-100 mb-3 p-2 lb fw-semibold rounded-3' style={{'resize': 'none', 'min-height': '200px'}}></textarea>
                     </div>
-                    <div className=' justify-content-start d-flex'>
-                        <button className=' col-4 btn p-3' id='send' type='submit'>SEND MESSAGE <BsFillCursorFill className='btnIcon' size={24} /></button>
+                    <div className='justify-content-start d-flex'>
+                        <button className={`${isSmallScreen ? 'col-12' : 'col-4'} btn p-3`} id='send' type='submit'>SEND MESSAGE <BsFillCursorFill className='btnIcon' size={24} /></button>
                     </div>
                 </form>
             </div>
-            <RightTitle title={'CONTACT'}/>
             {showToast && (
             <div className="toast show fw-medium animate_drop" role="alert" aria-live="assertive" aria-atomic="true" style={{ position: 'fixed', top: '5%', zIndex:'9999', 'background-color': 'var(--primary-color)' }} >
                 <div className="toast-body">{toastMessage}</div>

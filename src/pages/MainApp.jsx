@@ -16,7 +16,7 @@ function MainApp() {
             <Project />
             <About />
             <Feedback />
-            <Contact />
+            <Contact /> 
         </div>
     );
 }
