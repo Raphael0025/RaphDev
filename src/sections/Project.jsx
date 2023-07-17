@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Title from '../Component/Title'
 import ProjectTile from '../Component/ProjectTile'
 import { Link } from 'react-router-dom';
@@ -63,12 +63,22 @@ const images = [
         projDesc: 'Promodoro Clock Technique',
     },
 ]
-
 function Project() {
+    const [isSmallScreen, setIsSmallScreen] = useState(false);
+    useEffect(() => {
+        const handleResize = () => {
+            setIsSmallScreen(window.innerWidth < 576);
+        }
+        window.addEventListener('resize', handleResize)
+        handleResize()
+
+        return() => window.removeEventListener('resize', handleResize)
+    },[])
     return (
-        <div id='projects' className='d-flex flex-column justify-content-center align-items-center z-1 p-5'>
-            <div>
+        <div id='projects' className={`d-flex flex-column justify-content-center align-items-center z-1 ${isSmallScreen ? 'p-3' : 'p-5'}`}>
+            <div className='mb-3'>
                 <Title className='z-1n' title={'PROJECTS'}/>
+                <figcaption className={`text-start blockquote-footer ${isSmallScreen ? 'fs-6 px-3 pt-3' : 'fs-5'}`} style={{color: 'var(--text)'}}>I invite you to explore and review my recent projects, showcasing my skills and expertise.</figcaption>
             </div>
             <div className='container d-flex flex-wrap justify-content-center align-items-center flex-row '>
                 {images.map((image, index) => (

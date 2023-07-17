@@ -1,3 +1,15 @@
+::-webkit-scrollbar{
+  width: 5px;
+}
+::-webkit-scrollbar-track{
+  background: var(--dark-color);
+}
+::-webkit-scrollbar-thumb{
+  background: var(--secondary-color);
+}
+::-webkit-scrollbar-thumb:hover{
+  background: var(--background);
+}
 :root{
   --primary-color: #254E58;
   --dark-color: #384e52;
@@ -290,14 +302,16 @@ input::placeholder, textarea::placeholder{
     box-shadow: 0 2px 4px 3px var(--secondary-color);
   }
 .slide{
-    height: 350px;
+    min-height: 450px;
     opacity: 0.5;
     transform: scale(.7);
     transition: .5s;
+    background-color: var(--primary-fade-color);
 }
 .slide-active{
     opacity: 1;
     transform: scale(1.1);
+    background-color: var(--primary-color);
 }
 
 .shape {
@@ -363,6 +377,11 @@ input::placeholder, textarea::placeholder{
   }
   .custom-card:hover{
     transform: scale(1);
+  }
+  .slide-active{
+    opacity: 1;
+    transform: scale(1);
+    background-color: var(--primary-color);
   }
   .shape {
     width: 95%;
