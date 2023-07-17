@@ -85,12 +85,13 @@ function SliderComp() {
         {slides.map((slide, index) => (
           <div className={`rounded-3 d-flex justify-content-center align-items-center flex-column ${isSmallScreen ? 'p-3' : 'p-5'} m-0 ${index === slideIndex ? 'slide slide-active rounded-5' : 'slide' }`} key={index} >
             <img alt='filler' src={slide.url} className='rounded-circle w-50' />
-            <h3 className='fw-bold'>{slide.name}</h3>
             <div className='w-100 d-flex justify-content-start'>
               <FaQuoteLeft size={24}/>
             </div>
             <p className='lh-sm text-start fs-6 fw-light'> {slide.review}</p>
-
+            <div className='d-flex justify-content-end py-3 w-100'>
+              <figcaption className='blockquote-footer fw-bold fs-5' style={{color: 'var(--text)'}}>{slide.name}</figcaption>
+            </div>
           </div>
         ))}
       </Slider>

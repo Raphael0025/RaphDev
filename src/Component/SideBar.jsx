@@ -41,160 +41,97 @@ function SideBar() {
     return (
         <div className="nav d-flex justify-content-center p-3 rounded rounded-4 z-3">
         <nav className="side justify-content-evenly">
-            <div
-            className="nav-items"
-            onMouseEnter={() => handleMouse('home')}
-            onMouseLeave={handleMouseLeave}
-            onClick={() => handleClick('home')}
-            >
-            {isSmallScreen ? (
-                isHover === 'home' ? (
-                <BsHouseFill className="itm" size={{sizeIcon}} />
-                ) : (
-                <BsHouse className="itm" size={{sizeIcon}} />
-                )
-            ) : (
-                <>
-                {isHover === 'home' ? (
+            <div className="nav-items" onMouseEnter={() => handleMouse('home')} onMouseLeave={handleMouseLeave} onClick={() => handleClick('home')} >
+                {isSmallScreen ? ( isHover === 'home' ? ( <BsHouseFill className="itm" size={{sizeIcon}} /> ) : ( <BsHouse className="itm" size={{sizeIcon}} /> ) ) : (
                     <>
-                    <BsHouseFill className="itm" size={{sizeIcon}} />
-                    <span className="txt">Home</span>
+                    {isHover === 'home' ? ( <>
+                            <BsHouseFill className="itm" size={{sizeIcon}} />
+                            <span className="txt">Home</span>
+                        </> ) : (
+                        <BsHouse className="itm" size={{sizeIcon}} />
+                    )}
                     </>
-                ) : (
-                    <BsHouse className="itm" size={{sizeIcon}} />
                 )}
-                </>
-            )}
             </div>
-
-            <div
-            className="nav-items"
-            onMouseEnter={() => handleMouse('services')}
-            onMouseLeave={handleMouseLeave}
-            onClick={() => handleClick('services')}
-            >
-            {isSmallScreen ? (
-                isHover === 'services' ? (
-                <BsBriefcaseFill className="itm" size={{sizeIcon}} />
+            <div className="nav-items" onMouseEnter={() => handleMouse('services')} onMouseLeave={handleMouseLeave} onClick={() => handleClick('services')} >
+                {isSmallScreen ? ( isHover === 'services' ? ( <BsBriefcaseFill className="itm" size={{sizeIcon}} />
+                    ) : ( <BsBriefcase className="itm" size={{sizeIcon}} /> )
                 ) : (
-                <BsBriefcase className="itm" size={{sizeIcon}} />
-                )
-            ) : (
-                <>
-                {isHover === 'services' ? (
                     <>
-                    <BsBriefcaseFill className="itm" size={{sizeIcon}} />
-                    <span className="txt">Services</span>
+                    {isHover === 'services' ? (
+                        <>
+                            <BsBriefcaseFill className="itm" size={{sizeIcon}} />
+                            <span className="txt">Services</span>
+                        </>
+                    ) : (
+                        <BsBriefcase className="itm" size={{sizeIcon}} />
+                    )}
                     </>
-                ) : (
-                    <BsBriefcase className="itm" size={{sizeIcon}} />
                 )}
-                </>
-            )}
             </div>
-
-            <div
-            className="nav-items"
-            onMouseEnter={() => handleMouse('projects')}
-            onMouseLeave={handleMouseLeave}
-            onClick={() => handleClick('projects')}
-            >
-            {isSmallScreen ? (
-                isHover === 'projects' ? (
-                <BsXDiamondFill className="itm" size={{sizeIcon}} />
+            <div className="nav-items" onMouseEnter={() => handleMouse('projects')} onMouseLeave={handleMouseLeave} onClick={() => handleClick('projects')} >
+                {isSmallScreen ? ( isHover === 'projects' ? ( <BsXDiamondFill className="itm" size={{sizeIcon}} />
+                    ) : ( <BsXDiamond className="itm" size={{sizeIcon}} /> )
                 ) : (
-                <BsXDiamond className="itm" size={{sizeIcon}} />
-                )
-            ) : (
-                <>
-                {isHover === 'projects' ? (
                     <>
-                    <BsXDiamondFill className="itm" size={{sizeIcon}} />
-                    <span className="txt">Projects</span>
+                    {isHover === 'projects' ? (
+                        <>
+                            <BsXDiamondFill className="itm" size={{sizeIcon}} />
+                            <span className="txt">Projects</span>
+                        </>
+                    ) : (
+                        <BsXDiamond className="itm" size={{sizeIcon}} />
+                    )}
                     </>
-                ) : (
-                    <BsXDiamond className="itm" size={{sizeIcon}} />
                 )}
-                </>
-            )}
             </div>
-
-            <div
-            className="nav-items"
-            onMouseEnter={() => handleMouse('about')}
-            onMouseLeave={handleMouseLeave}
-            onClick={() => handleClick('about')}
-            >
-            {isSmallScreen ? (
-                isHover === 'about' ? (
-                <BsPersonFill className="itm" size={{sizeIcon}} />
+            <div className="nav-items" onMouseEnter={() => handleMouse('about')} onMouseLeave={handleMouseLeave} onClick={() => handleClick('about')} >
+                {isSmallScreen ? (  isHover === 'about' ? ( <BsPersonFill className="itm" size={{sizeIcon}} />
+                    ) : ( <BsPerson className="itm" size={{sizeIcon}} /> )
                 ) : (
-                <BsPerson className="itm" size={{sizeIcon}} />
-                )
-            ) : (
-                <>
-                {isHover === 'about' ? (
                     <>
-                    <BsPersonFill className="itm" size={{sizeIcon}} />
-                    <span className="txt">About Me</span>
+                    {isHover === 'about' ? (
+                        <>
+                            <BsPersonFill className="itm" size={{sizeIcon}} />
+                            <span className="txt">About Me</span>
+                        </>
+                    ) : (
+                        <BsPerson className="itm" size={{sizeIcon}} />
+                    )}
                     </>
-                ) : (
-                    <BsPerson className="itm" size={{sizeIcon}} />
                 )}
-                </>
-            )}
             </div>
-
-            <div
-            className="nav-items"
-            onMouseEnter={() => handleMouse('feed')}
-            onMouseLeave={handleMouseLeave}
-            onClick={() => handleClick('feed')}
-            >
-            {isSmallScreen ? (
-                isHover === 'feed' ? (
-                <BsChatQuoteFill className="itm" size={{sizeIcon}} />
+            <div className="nav-items" onMouseEnter={() => handleMouse('feed')} onMouseLeave={handleMouseLeave} onClick={() => handleClick('feed')} >
+                {isSmallScreen ? ( isHover === 'feed' ? ( <BsChatQuoteFill className="itm" size={{sizeIcon}} />
+                    ) : ( <BsChatQuote className="itm" size={{sizeIcon}} /> )
                 ) : (
-                <BsChatQuote className="itm" size={{sizeIcon}} />
-                )
-            ) : (
-                <>
-                {isHover === 'feed' ? (
                     <>
-                    <BsChatQuoteFill className="itm" size={{sizeIcon}} />
-                    <span className="txt">Testimonials</span>
+                    {isHover === 'feed' ? (
+                        <>
+                            <BsChatQuoteFill className="itm" size={{sizeIcon}} />
+                            <span className="txt">Testimonials</span>
+                        </>
+                    ) : (
+                        <BsChatQuote className="itm" size={{sizeIcon}} />
+                    )}
                     </>
-                ) : (
-                    <BsChatQuote className="itm" size={{sizeIcon}} />
                 )}
-                </>
-            )}
             </div>
-
-            <div
-            className="nav-items"
-            onMouseEnter={() => handleMouse('contact')}
-            onMouseLeave={handleMouseLeave}
-            onClick={() => handleClick('contact')}
-            >
-            {isSmallScreen ? (
-                isHover === 'contact' ? (
-                <BsEnvelopeFill className="itm" size={{sizeIcon}} />
+            <div className="nav-items" onMouseEnter={() => handleMouse('contact')} onMouseLeave={handleMouseLeave} onClick={() => handleClick('contact')} >
+                {isSmallScreen ? ( isHover === 'contact' ? ( <BsEnvelopeFill className="itm" size={{sizeIcon}} />
+                    ) : ( <BsEnvelope className="itm" size={{sizeIcon}} /> )
                 ) : (
-                <BsEnvelope className="itm" size={{sizeIcon}} />
-                )
-            ) : (
-                <>
-                {isHover === 'contact' ? (
                     <>
-                    <BsEnvelopeFill className="itm" size={{sizeIcon}} />
-                    <span className="txt">Contact Me</span>
+                    {isHover === 'contact' ? (
+                        <>
+                            <BsEnvelopeFill className="itm" size={{sizeIcon}} />
+                            <span className="txt">Contact Me</span>
+                        </>
+                    ) : (
+                        <BsEnvelope className="itm" size={{sizeIcon}} />
+                    )}
                     </>
-                ) : (
-                    <BsEnvelope className="itm" size={{sizeIcon}} />
                 )}
-                </>
-            )}
             </div>
         </nav>
         </div>

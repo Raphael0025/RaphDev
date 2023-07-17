@@ -115,7 +115,7 @@ function Contact() {
                         <input value={formData.subject} onChange={handleChange} type='text' className='w-100 mb-3 p-2 lb fw-semibold rounded-3' id='subject' name='subject' placeholder='Subject' required />
                     </div>
                     <div className='col-12 '>
-                        <textarea value={formData.message} onChange={handleChange} placeholder='Message...' name='message' className='w-100 mb-3 p-2 lb fw-semibold rounded-3' style={{'resize': 'none', 'min-height': '200px'}}></textarea>
+                        <textarea value={formData.message} onChange={handleChange} placeholder='Message...' name='message' className='w-100 mb-3 p-2 lb fw-semibold rounded-3' style={{'resize': 'none', minHeight: '200px'}}></textarea>
                     </div>
                     <div className='justify-content-start d-flex'>
                         <button className={`${isSmallScreen ? 'col-12' : 'col-4'} btn p-3`} id='send' type='submit'>SEND MESSAGE <BsFillCursorFill className='btnIcon' size={24} /></button>

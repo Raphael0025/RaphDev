@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Title from '../Component/Title'
 import ProjectTile from '../Component/ProjectTile'
 import '../App.css';
@@ -171,15 +171,25 @@ const images = [
     },
 ]
 
-function AllProjects() {
+function AllProjects() { 
+    const [isSmallScreen, setIsSmallScreen] = useState(false);
+    useEffect(() => {
+        const handleResize = () => {
+            setIsSmallScreen(window.innerWidth < 576);
+        }
+        window.addEventListener('resize', handleResize)
+        handleResize()
+
+        return() => window.removeEventListener('resize', handleResize)
+    },[])
     return (
         <div className='AllProj'>
-            <div className='container projects d-flex flex-column justify-content-center align-items-center p-5' >
+            <div className={`container projects d-flex flex-column justify-content-center align-items-center ${isSmallScreen ? 'p-3' : 'p-5'}`} >
                 <div className='container d-flex justify-content-start align-items-start flex-column'>
                     <Title className='z-1n ps-3 pe-5' title={'PROJECTS'}/>
-                    <Link to='/' className='fw-bold fs-4 link-btn p-2 ps-5'><FiArrowLeft  size={24} className='fw-bolder'/> Go Back</Link> 
+                    <Link to='/' className={`fw-bold fs-4 link-btn p-2 ${isSmallScreen ? 'ps-0' : 'ps-5'}`}><FiArrowLeft  size={24} className='fw-bolder'/> Go Back</Link> 
                 </div>
-                <div className='container d-flex flex-wrap justify-content-start align-items-center flex-row ps-5 pt-4 pe-5 animate__animated animate__fadeIn'>
+                <div className={`container d-flex flex-wrap ${isSmallScreen ? 'justify-content-center' : 'justify-content-start px-5'} align-items-center flex-row pt-4 animate__animated animate__fadeIn`}>
                     {images.map((image, index) => (
                         <ProjectTile key={index} image={image.url} title={image.projDesc} siteUrl={image.webUrl}/>
                     ))}
