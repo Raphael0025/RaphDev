@@ -349,17 +349,10 @@ input::placeholder, textarea::placeholder{
   .title{
     font-size:3rem;
     letter-spacing: 0.1em;
-    font-weight: 900;
-    color: var(--text);
     -webkit-text-stroke: 3px var(--tertiary-color);
-    cursor: default;
-    transition: all 0.5s ease-in-out;
   }
-  .custom-card{
-    background-color: var(--tertiary-color);
-    & .service-color{
-      color: var(--primary-color);
-    }
+  .service-color{
+    color: var(--primary-color);
   }
   .custom-card:hover{
     transform: scale(1);
@@ -367,6 +360,12 @@ input::placeholder, textarea::placeholder{
   .shape {
     width: 95%;
     height: 100%;
+  }
+  #typing-text {
+    color: var(--white);
+    overflow: hidden;
+    white-space: wrap;
+    animation:none;
   }
 }
 @keyframes jump{

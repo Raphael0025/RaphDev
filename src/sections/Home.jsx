@@ -19,12 +19,12 @@ function Home() {
             let textIndex = 0;
             const typeNextCharacter = () => {
                 currentText += targetText[textIndex];
-                setText(currentText);
+                    setText(currentText);
                 textIndex++;
                 if (textIndex < targetText.length) {
                 setTimeout(typeNextCharacter, typingDuration);
                 } else {
-                setTimeout(reverseAnimation, reverseAnimationDelay);
+                    setTimeout(reverseAnimation, reverseAnimationDelay);
                 }
             };
             typeNextCharacter();
