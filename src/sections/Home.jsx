@@ -69,11 +69,11 @@ function Home() {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if(entry.isIntersecting && entry.intersectionRatio > 0) {
-                    entry.target.classList.remove('animate__fadeOutRight')
-                    entry.target.classList.add('animate__fadeInRight')
+                    entry.target.classList.remove('animate__fadeOut')
+                    entry.target.classList.add('animate__fadeIn')
                 } else {
-                    entry.target.classList.remove('animate__fadeInRight')
-                    entry.target.classList.add('animate__fadeOutRight')
+                    entry.target.classList.remove('animate__fadeIn')
+                    entry.target.classList.add('animate__fadeOut')
                 }
             })
         }, options)
