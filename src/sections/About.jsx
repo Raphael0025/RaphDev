@@ -59,7 +59,7 @@ function About() {
         };
     }, []);
     return (
-        <div id='about' className={`h-100 bio container d-flex align-items-center z-0 ${isSmallScreen ? 'p-0' : 'p-5'}`}>
+        <div id='about' className={` bio container d-flex align-items-center z-0 ${isSmallScreen ? 'p-0' : 'p-5 h-100'}`}>
             <div className={`d-flex ${isSmallScreen ? 'flex-column p-2' : 'flex-row p-3'} align-items-center justify-content-center`}>
                 {isSmallScreen ? <Title title={'ABOUT'} /> : <RightTitle title={'ABOUT'}/>}
                 <div ref={imgContainerRef} className={`animate__animated img-container d-flex align-items-center justify-content-center ${isSmallScreen ? 'p-3' : 'p-0'} z-1n rounded w-100 h-100 position-relative`}>
