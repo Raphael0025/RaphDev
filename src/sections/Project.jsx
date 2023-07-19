@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import Title from '../Component/Title'
 import ProjectTile from '../Component/ProjectTile'
 import { Link } from 'react-router-dom';
@@ -65,6 +65,8 @@ const images = [
 ]
 function Project() {
     const [isSmallScreen, setIsSmallScreen] = useState(false);
+    const figcaptionRef = useRef(null);
+    const projectRefs = useRef(null);
     useEffect(() => {
         const handleResize = () => {
             setIsSmallScreen(window.innerWidth < 576);
@@ -74,18 +76,58 @@ function Project() {
 
         return() => window.removeEventListener('resize', handleResize)
     },[])
+    useEffect(() => {
+        const options = {
+          root: null, // Use the viewport as the root
+          threshold: 0.2, // Percentage of element visibility required to trigger the callback
+        };
+    
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting && entry.intersectionRatio > 0) {
+                    entry.target.classList.remove('animate__fadeOutUp');
+                    entry.target.classList.add('animate__fadeInUp');
+                } else {
+                    entry.target.classList.remove('animate__fadeInUp');
+                    entry.target.classList.add('animate__fadeOutUp');
+                }
+            });
+        }, options);
+
+        const observer2 = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting && entry.intersectionRatio > 0) {
+                    entry.target.classList.remove('animate__fadeOut');
+                    entry.target.classList.add('animate__fadeIn');
+                } else {
+                    entry.target.classList.remove('animate__fadeIn');
+                    entry.target.classList.add('animate__fadeOut');
+                }
+            });
+        }, options);
+    
+        const currRef = figcaptionRef.current;
+        const curr = projectRefs.current
+        observer2.observe(curr)
+        observer.observe(currRef);
+    
+        return () => {
+            observer.unobserve(currRef);
+            observer2.unobserve(curr);
+        };
+    }, []);
     return (
         <div id='projects' className={`d-flex flex-column justify-content-center align-items-center z-1 ${isSmallScreen ? 'p-3' : 'p-5'}`}>
             <div className='mb-3'>
                 <Title className='z-1n' title={'PROJECTS'}/>
-                <figcaption className={`text-start blockquote-footer ${isSmallScreen ? 'fs-6 px-3 pt-3' : 'fs-5'}`} style={{color: 'var(--text)'}}>I invite you to explore and review my recent projects, showcasing my skills and expertise.</figcaption>
+                <figcaption ref={figcaptionRef} className={`animate__animated text-start blockquote-footer ${isSmallScreen ? 'fs-6 px-3 pt-3' : 'fs-5'}`} style={{color: 'var(--text)'}}>I invite you to explore and review my recent projects, showcasing my skills and expertise.</figcaption>
             </div>
             <div className='container d-flex flex-wrap justify-content-center align-items-center flex-row '>
                 {images.map((image, index) => (
                     <ProjectTile key={index} image={image.url} title={image.projDesc} siteUrl={image.webUrl}/>
                 ))}
             </div>
-            <div className='d-flex align-items-end justify-content-end p-4 w-75'>
+            <div ref={projectRefs} className='animate__animated d-flex align-items-end justify-content-end p-4 w-75'>
                 <Link to='/all-projects' className='fw-bold fs-4 link-btn '>See More <FiArrowRight size={24} className='fw-bolder'/></Link> 
             </div>
         </div>

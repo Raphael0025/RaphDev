@@ -15,6 +15,8 @@ function Contact() {
         subject: '',
         message: '',
     });
+    const form = useRef();
+    const divRef = useRef(null);
     const [toastMessage, setToastMessage] = useState('');
     const [showToast, setShowToast] = useState(false);
     const handleChange = (e) => {
@@ -48,7 +50,7 @@ function Contact() {
             })
         e.target.reset()
     };
-    const form = useRef();
+
     const [isSmallScreen, setIsSmallScreen] = useState(false);
     useEffect(() => {
         const handleResize = () => {
@@ -59,11 +61,36 @@ function Contact() {
 
         return() => window.removeEventListener('resize', handleResize)
     },[])
+    useEffect(() => {
+        const options = {
+          root: null, // Use the viewport as the root
+          threshold: 0.2, // Percentage of element visibility required to trigger the callback
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting && entry.intersectionRatio > 0) {
+                    entry.target.classList.remove('animate__fadeOut');
+                    entry.target.classList.add('animate__fadeIn');
+                } else {
+                    entry.target.classList.remove('animate__fadeIn');
+                    entry.target.classList.add('animate__fadeOut');
+                }
+            });
+        }, options);
+        const divCurrRef = divRef.current;
+        observer.observe(divCurrRef);
+        const formCurrRef = form.current;
+        observer.observe(formCurrRef);
+        return () => {
+            observer.unobserve(divCurrRef);
+            observer.unobserve(formCurrRef);
+        };
+    }, []);
     return (
         <div id='contact' className={`container container-lg d-flex ${isSmallScreen ? 'flex-column p-2' : 'p-5'} align-items-center justify-content-center p-4-lg pb-5`}>
             {isSmallScreen ? <Title title={'CONTACT'} /> : <RightTitle title={'CONTACT'}/>}
             <div className={`d-flex ${isSmallScreen ? 'flex-column-reverse p-2' : 'p-5'} justify-content-center align-items-center text-start`}>
-                <div className={`${isSmallScreen ? 'col-12' : 'col-5'} rounded-5 p-3 me-3 fw-semibold fs-4 fs-5-lg`}>
+                <div ref={divRef} className={`animate__animated ${isSmallScreen ? 'col-12' : 'col-5'} rounded-5 p-3 me-3 fw-semibold fs-4 fs-5-lg`}>
                     <span className='cntct-dtl'>If you have any questions or If you want to hire me, feel free to contact me, I'll be in touch as soon as possible:</span>
                     <div className='mt-4 d-flex align-items-start '>
                         <IoLocationOutline className=' me-2' size={32} />
@@ -103,7 +130,7 @@ function Contact() {
                         </div>
                     </div>
                 </div>
-                <form ref={form} onSubmit={sendEmail} className='row g-2 rounded-4 p-3 contact_form z-2'>
+                <form ref={form} onSubmit={sendEmail} className='animate__animated row g-2 rounded-4 p-3 contact_form z-2'>
                     <div className={`head_form fs-1 fw-bold pb-3 ${isSmallScreen ? 'col-12' : 'col-7'} col-10-lg`}>Let's Talk about your Project!</div>
                     <div className={`${isSmallScreen ? 'col12' : 'col-6'} `}>
                         <input value={formData.name} onChange={handleChange} type='text' className='w-100 mb-3 p-2 lb fw-semibold rounded-3' id='name' name='name' placeholder="Your Name" required />

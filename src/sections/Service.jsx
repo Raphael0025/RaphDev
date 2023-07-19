@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import Title from '../Component/Title'
 import Card from '../Component/Card'
 import { FaJava, FaMobileAlt, FaDesktop  } from 'react-icons/fa';
@@ -7,6 +7,7 @@ import { GiArtificialIntelligence } from 'react-icons/gi';
 
 function Service() {
     const [isSmallScreen, setIsSmallScreen] = useState(false);
+    const figcaptionRef = useRef(null);
     useEffect(() => {
         const handleResize = () => {
             setIsSmallScreen(window.innerWidth < 576);
@@ -16,11 +17,36 @@ function Service() {
 
         return() => window.removeEventListener('resize', handleResize)
     },[])
+    useEffect(() => {
+        const options = {
+          root: null, // Use the viewport as the root
+          threshold: 0.2, // Percentage of element visibility required to trigger the callback
+        };
+    
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting && entry.intersectionRatio > 0) {
+                    entry.target.classList.remove('animate__fadeOutUp');
+                    entry.target.classList.add('animate__fadeInUp');
+                } else {
+                    entry.target.classList.remove('animate__fadeInUp');
+                    entry.target.classList.add('animate__fadeOutUp');
+                }
+            });
+        }, options);
+    
+        const currRef = figcaptionRef.current;
+        observer.observe(currRef);
+    
+        return () => {
+            observer.unobserve(currRef);
+        };
+    }, []);
     return (
         <div id='services' className={`d-flex flex-column justify-content-center align-items-center z-1 ${isSmallScreen ? 'mt-0 m-0 p-0 pt-0' : 'p-5 ms-5 me-5'} service`}>
             <div className='mb-3'>
                 <Title className='z-1n' title={'SERVICES'}/>
-                <figcaption className={`blockquote-footer ${isSmallScreen ? 'fs-6 px-3 pt-3' : 'fs-5'}`} style={{color: 'var(--text)'}}>Discover the range of services I offer and unlock new possibilities for your projects.</figcaption>
+                <figcaption ref={figcaptionRef} className={`animate__animated blockquote-footer ${isSmallScreen ? 'fs-6 px-3 pt-3' : 'fs-5'}`} style={{color: 'var(--text)'}}>Discover the range of services I offer and unlock new possibilities for your projects.</figcaption>
             </div>
             <div className={`container card-group row  ${isSmallScreen ? 'ps-2 pe-2 row-cols-1' : 'ps-5 pe-5 row-cols-3'} z-0`}>
                 <Card icon={<FaJava size={100} />} title={'Java Programming'} content={'Offering expert Java programming services, whether you need Console Line Interface (CLI) or Graphics User Interface (GUI) applications. Provide a top-notch custom solutions tailored to meet your specific requirements, Whether it`s a command-line tool or a visually engaging graphical application.'} />
