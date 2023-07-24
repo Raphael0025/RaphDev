@@ -26,7 +26,7 @@ function Contact() {
         e.preventDefault();
         const clientEmail = formData.email;
         const templateParams = {
-            to_email: 'rpbisla0025@gmail.com', // Replace with your email address
+            to_email: 'raphdev23@gmail.com', // Replace with your email address
             from_email: clientEmail,
             name: formData.name,
             subject: formData.subject,
